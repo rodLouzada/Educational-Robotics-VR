@@ -5,6 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Block
+  - Foward
+  - Reverse
+  - Number
+  - Next
+  - Previous
+  - Next Top
+  - Next Bottom
+  - Previous Top
+  - Previous Bottom
+  - Code
+  - Attachment
   layers:
   - Default
   - TransparentFX

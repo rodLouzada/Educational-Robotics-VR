@@ -6,17 +6,7 @@ public class snapIn : MonoBehaviour
 {
     public Transform local;
     bool free = true;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     private void OnTriggerEnter(Collider col)//other)
     {

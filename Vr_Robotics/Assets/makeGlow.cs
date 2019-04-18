@@ -19,12 +19,12 @@ public class makeGlow : MonoBehaviour
         halo.enabled = false;
     }
 
-   /* void Update()
+    void Update()
     {
         if (makeItGlow)
         {
             MakeGlow();
         }
         else StopGlow(); 
-    } */
+    } 
 }
