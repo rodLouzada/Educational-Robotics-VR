@@ -341,13 +341,13 @@ public class codeList : MonoBehaviour
         if (name == "motor")
             {
             Debug.Log("motor: " + b.rot.ToString() + " rotation, " + b.value.ToString() + " values \n");
-            if(b.rot == 1)
+            if(b.rot == 1) //FOWARD
                 {
                 Vector3 currentPos = car.gameObject.transform.position;
                 Vector3 newPos = new Vector3(0, 0, b.value * 0.1f);
                 car.MovePosition(currentPos + newPos);
                 }
-            if (b.rot == 2)
+            if (b.rot == 2) //BACKWARD
                 {
                 Vector3 currentPos = car.gameObject.transform.position;
                 Vector3 newPos = new Vector3(0, 0, -0.1f);
