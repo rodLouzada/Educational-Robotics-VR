@@ -37,7 +37,7 @@ public class PickupObject : MonoBehaviour
 
     public void pickedUp(Transform t)
     {
-
+        Debug.Log("I MADE IT HERE!");
         if (holder != null)
         {
             return;
@@ -66,7 +66,7 @@ public class PickupObject : MonoBehaviour
     public void snapped()
     {
         holder = null;
-        rb.useGravity = false;        
+        rb.useGravity = false;
         rb.isKinematic = true;
     }
 }
