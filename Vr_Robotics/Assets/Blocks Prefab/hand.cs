@@ -92,12 +92,7 @@ public class hand : MonoBehaviour
 
         
 
-        if (attachment != null && c.gameObject.CompareTag("rst") && triggerValue > pickTriggerTrashHold)
-        {
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
-
-        }
+        
 
 
 

@@ -6,7 +6,7 @@ public class Hand : MonoBehaviour
 {
 	public OVRInput.Controller myController;
 	PickupObject currentAttachment = null;
-	public float pickUpTriggerThreshold;
+    public float pickUpTriggerThreshold;
 	public float releaseTriggerThreshold;
 	public bool dissappearOnPickup;
     // Start is called before the first frame update
@@ -27,10 +27,11 @@ public class Hand : MonoBehaviour
 		if(rb == null) {
 			return;
 		}
-		
-		PickupObject p = rb.GetComponent<PickupObject>();
-		
-		if(p == null) {
+        
+
+        PickupObject p = rb.GetComponent<PickupObject>();
+
+        if (p == null ) {
 			return;
 		}
 		
