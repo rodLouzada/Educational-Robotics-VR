@@ -23,8 +23,8 @@ public class codeSnapIn : MonoBehaviour
             Transform other = col.gameObject.GetComponentInParent<Transform>();
 
             //parent.GetComponent<PickupObject>().snapped();
-            Vector3 pos = new Vector3(local.position.x, local.position.y, local.position.z);
-
+            Vector3 pos = new Vector3(local.position.x - 0.02f, local.position.y, local.position.z);
+            //Vector3 ofc = new Vector3(-0.02f, 0f, 0f);
             other.transform.position = pos;//Vector3.MoveTowards(other.transform.position, pos, 2 * Time.deltaTime);
             other.transform.parent.position = other.transform.position - other.transform.localPosition;
             
