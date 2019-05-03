@@ -334,7 +334,7 @@ public class OvrAvatarMaterialManager : MonoBehaviour
         int renderQueue = TargetRenderer.sharedMaterial.renderQueue;
         TargetRenderer.sharedMaterial.shader = Shader.Find(AVATAR_SHADER_LOADER);
         TargetRenderer.sharedMaterial.renderQueue = renderQueue;
-        TargetRenderer.sharedMaterial.SetColor(AVATAR_SHADER_COLOR, Color.white);
+        TargetRenderer.sharedMaterial.SetColor(AVATAR_SHADER_COLOR, Color.blue);
 
         while (TextureCopyManager.GetTextureCount() > 0)
         {

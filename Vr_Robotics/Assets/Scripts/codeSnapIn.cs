@@ -17,9 +17,11 @@ public class codeSnapIn : MonoBehaviour
     {
         if ((col.CompareTag("Previous")) && free)
         {
+            
+
             Transform other = col.gameObject.GetComponentInParent<Transform>();
             
-            Vector3 pos = new Vector3(local.position.x  , local.position.y, local.position.z);
+            Vector3 pos = new Vector3(local.position.x   , local.position.y, local.position.z);
             //Vector3 ofc = new Vector3(-0.02f, 0f, 0f);
             other.transform.position = pos;//Vector3.MoveTowards(other.transform.position, pos, 2 * Time.deltaTime);
             //other.transform.parent.position = other.transform.position - other.transform.localPosition;
@@ -29,6 +31,7 @@ public class codeSnapIn : MonoBehaviour
             //other.transform.parent = local.transform;
 
             other.transform.parent = local.transform;
+           // col.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
             free = false;
 

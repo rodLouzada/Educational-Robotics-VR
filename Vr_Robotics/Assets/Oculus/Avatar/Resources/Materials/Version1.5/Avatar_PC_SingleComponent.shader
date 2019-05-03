@@ -12,11 +12,11 @@ Shader "OvrAvatar/Avatar_PC_SingleComponent"
 {
     Properties
     {
-        [NoScaleOffset] _MainTex("Color (RGB)", 2D) = "white" {}
+        [NoScaleOffset] _MainTex("Color (RGB)", 2D) = "blue" {}
         [NoScaleOffset] _NormalMap("Normal Map", 2D) = "bump" {}
         [NoScaleOffset] _RoughnessMap("Roughness Map", 2D) = "black" {}
 
-        _BaseColor("Color Tint", Color) = (0.95,0.77,0.63)
+        _BaseColor("Color Tint", Color) = (0,0,0)
         _Dimmer("Dimmer", Range(0.0,1.0)) = 1.0
         _Alpha("Alpha", Range(0.0,1.0)) = 1.0
 
@@ -33,7 +33,7 @@ Shader "OvrAvatar/Avatar_PC_SingleComponent"
         // This fixes broken faces with convex meshes when using the alpha path.
         Pass
         {
-            Color(0,0,0,0)
+            Color(0,255,0,0)
         }
 
         CGPROGRAM

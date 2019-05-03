@@ -2,7 +2,7 @@
 #define AVATAR_UTIL_CG_INCLUDED
 
 #include "UnityCG.cginc"
-
+# include "Assets/Oculus/Avatar/Content/Materials/AvatarMaterialStateShader.cginc"
 #define SAMPLE_MODE_COLOR 0
 #define SAMPLE_MODE_TEXTURE 1
 #define SAMPLE_MODE_TEXTURE_SINGLE_CHANNEL 2

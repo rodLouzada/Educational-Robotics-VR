@@ -343,15 +343,20 @@ public class codeList : MonoBehaviour
             Debug.Log("motor: " + b.rot.ToString() + " rotation, " + b.value.ToString() + " values \n");
             if(b.rot == 1) //FOWARD
                 {
-                Vector3 currentPos = car.gameObject.transform.position;
+                /*Vector3 currentPos = car.gameObject.transform.position;
                 Vector3 newPos = new Vector3(0, 0, b.value * 0.1f);
-                car.MovePosition(currentPos + newPos);
+                car.MovePosition(currentPos + newPos);*/
+                Debug.Log("1");
+                car.AddRelativeForce(Vector3.forward * b.value);
+               
                 }
             if (b.rot == 2) //BACKWARD
                 {
-                Vector3 currentPos = car.gameObject.transform.position;
+                /*Vector3 currentPos = car.gameObject.transform.position;
                 Vector3 newPos = new Vector3(0, 0, -0.1f);
-                car.gameObject.transform.position = Vector3.Lerp(currentPos, newPos,0.01f);
+                car.gameObject.transform.position = Vector3.Lerp(currentPos, newPos,0.01f); */
+                car.AddRelativeForce(Vector3.forward * b.value);
+                Debug.Log("2");
                 }
             if (b.rot == 3)
                 {
@@ -360,11 +365,12 @@ public class codeList : MonoBehaviour
                 Vector3 newPos = new Vector3(0, 0, 0.1f);
                 //car.gameObject.transform.position = Vector3.Lerp(currentPos, (currentPos+newPos), 0.5f);
                 car.AddRelativeForce(Vector3.forward * b.value);
+                Debug.Log("3");
 
                 }
             if (b.rot == 4)
                 {
-
+                Debug.Log("4");
                 }
 
 
