@@ -43,6 +43,7 @@ public class PickupObject : MonoBehaviour
             if (this.tag == "Code")
                 {
                 rb.velocity = new Vector3(0, 0, 0);
+                rb.maxAngularVelocity = 0f;
                 }
             }
     }

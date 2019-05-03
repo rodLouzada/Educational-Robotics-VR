@@ -10,7 +10,7 @@ public class codeSnapIn : MonoBehaviour
 
     private void Start()
     {
-        start = GameObject.Find("Start");
+       // start = GameObject.Find("Start");
     }
 
     private void OnTriggerEnter(Collider col)//other)
@@ -21,14 +21,15 @@ public class codeSnapIn : MonoBehaviour
             Transform parent = other.gameObject.GetComponentInParent<Transform>(); */
 
             Transform other = col.gameObject.GetComponentInParent<Transform>();
-
+            //other.transform.parent = local.transform;
             //parent.GetComponent<PickupObject>().snapped();
-            Vector3 pos = new Vector3(local.position.x - 0.02f, local.position.y, local.position.z);
+            Vector3 pos = new Vector3(local.position.x  , local.position.y, local.position.z);
             //Vector3 ofc = new Vector3(-0.02f, 0f, 0f);
             other.transform.position = pos;//Vector3.MoveTowards(other.transform.position, pos, 2 * Time.deltaTime);
             other.transform.parent.position = other.transform.position - other.transform.localPosition;
-            
-            other.transform.localRotation = local.localRotation;
+            //other.transform.localPosition = new Vector3(other.transform.localPosition.x, other.transform.localPosition.y, other.transform.localPosition.z);
+            //other.transform.localRotation = local.localRotation;
+            other.transform.rotation = local.rotation;
             other.transform.parent = local.transform;
 
            
