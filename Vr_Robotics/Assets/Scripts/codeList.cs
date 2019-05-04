@@ -297,12 +297,10 @@ public class codeList : MonoBehaviour
 
     public IEnumerator runCode(List<_block> lb)
         {
-        _block aux;
         foreach(_block b in lb)
             {
-            StartCoroutine( functions(b, lb));
+            yield return StartCoroutine(functions(b, lb));
             }
-        yield return null;
         }
     
     public IEnumerator functions(_block b, List<_block> lb)
@@ -320,7 +318,7 @@ public class codeList : MonoBehaviour
                     functions(_b);
                     }*/
                 Debug.Log("For i: " + i.ToString());
-                runCode(b.child);
+                yield return StartCoroutine(runCode(b.child));
                 } 
             }
         if (name == "if")
@@ -337,7 +335,7 @@ public class codeList : MonoBehaviour
             else
                 {
                 foreach (_block _b in elseB.child)
-                    runCode(elseB.child);
+                    yield return StartCoroutine(runCode(elseB.child));
                 }
             }
         if (name == "motor")
@@ -350,6 +348,7 @@ public class codeList : MonoBehaviour
                 car.MovePosition(currentPos + newPos);*/
                 //Debug.Log("1");
                 car.AddRelativeForce(Vector3.forward * b.value);
+                yield return new WaitForSeconds(1.0f);
                 }
             if (b.rot == 2) //BACKWARD
                 {
@@ -357,16 +356,18 @@ public class codeList : MonoBehaviour
                 Vector3 newPos = new Vector3(0, 0, -0.1f);
                 car.gameObject.transform.position = Vector3.Lerp(currentPos, newPos,0.01f); */
                 car.AddRelativeForce(Vector3.forward * b.value);
+                yield return new WaitForSeconds(1.0f);
                 //Debug.Log("2");
                 }
             if (b.rot == 3)
                 {
 
-                Vector3 currentPos = car.gameObject.transform.position;
-                Vector3 newPos = new Vector3(0, 0, 0.01f);
-                car.gameObject.transform.position = Vector3.Lerp(currentPos, (currentPos+newPos), 0.5f);
-                //car.AddRelativeForce(Vector3.forward * b.value);
-                waiting(1.0f);
+                Vector3 currentPos = car.gameObject.transform.localPosition;
+                Vector3 newPos = new Vector3(0, 0, 0.05f* b.value);
+                
+                
+                car.AddRelativeForce(Vector3.forward * 100);
+                yield return new WaitForSeconds(b.value);
                 //Debug.Log("3");
 
 
@@ -377,11 +378,11 @@ public class codeList : MonoBehaviour
                 {
                 //Debug.Log("4");
                 }
-            return null;
+            yield return null;
 
 
             }
-        return null;
+        yield return null;
         }
 
 
