@@ -22,32 +22,29 @@ public class MoveCar : MonoBehaviour
         move = this.gameObject.transform.position;
     }
 
-    void MoveForward()
+    void MoveForward(int val)
     {
-        carRB.velocity = transform.forward * carSpeed;
+        carRB.velocity = transform.forward * val;
     }
 
-    void MoveBackward()
+    void MoveBackward(int val)
     {
-        carRB.velocity = -transform.forward * carSpeed;
+        carRB.velocity = -transform.forward * val;
     }
 
-    void RotateLeft()
+    void RotateLeft(int val)
     {
-        transform.Rotate(new Vector3(0, -1, 0) * Time.deltaTime * carSpeed, Space.World);
+        transform.Rotate(new Vector3(0, -1, 0) * Time.deltaTime * val, Space.World);
     }
 
-    void RotateRight()
+    void RotateRight(int val)
     {
-        transform.Rotate(new Vector3(0, 1, 0) * Time.deltaTime * carSpeed, Space.World);
+        transform.Rotate(new Vector3(0, 1, 0) * Time.deltaTime * val, Space.World);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            this.MoveForward();
-        }
+
     }
 }
