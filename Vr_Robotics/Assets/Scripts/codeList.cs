@@ -245,8 +245,8 @@ public class codeList : MonoBehaviour
                 {
                 string leftDirection = g.gameObject.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text;
                 string leftRotations = g.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text;
-                string rightDirection = g.gameObject.transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text;
-                string rightRotations = g.gameObject.transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text;
+                string rightDirection = g.gameObject.transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text;
+                string rightRotations = g.gameObject.transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text;
                 _b = motors(leftDirection, leftRotations, rightDirection, rightRotations);
                 recursiveLast(lvl, _main_block_list, _b);
                 code += "Motor(Left_Motor(" + leftDirection + ", " + leftRotations + "), Right_Motor(" + rightDirection + ", " + rightRotations + ")); \n";
@@ -346,29 +346,29 @@ public class codeList : MonoBehaviour
                 /*Vector3 currentPos = car.gameObject.transform.position;
                 Vector3 newPos = new Vector3(0, 0, b.value * 0.1f);
                 car.MovePosition(currentPos + newPos);*/
-                //Debug.Log("1");
-                car.AddRelativeForce(Vector3.forward * b.value);
-                yield return new WaitForSeconds(1.0f);
+                Debug.Log("1");
+                car.AddRelativeForce(Vector3.forward * 70);
+                yield return new WaitForSeconds(b.value);
                 }
             if (b.rot == 2) //BACKWARD
                 {
                 /*Vector3 currentPos = car.gameObject.transform.position;
                 Vector3 newPos = new Vector3(0, 0, -0.1f);
                 car.gameObject.transform.position = Vector3.Lerp(currentPos, newPos,0.01f); */
-                car.AddRelativeForce(Vector3.forward * b.value);
-                yield return new WaitForSeconds(1.0f);
-                //Debug.Log("2");
+                car.AddRelativeForce(-Vector3.forward * 70);
+                yield return new WaitForSeconds(b.value);
+                Debug.Log("2");
                 }
-            if (b.rot == 3)
+            if (b.rot == 3)// rotate clockwise
                 {
 
-                Vector3 currentPos = car.gameObject.transform.localPosition;
-                Vector3 newPos = new Vector3(0, 0, 0.05f* b.value);
+                //Vector3 currentPos = car.gameObject.transform.localPosition;
+                //Vector3 newPos = new Vector3(0, 0, 0.05f* b.value);
                 
                 
-                car.AddRelativeForce(Vector3.forward * 100);
+                car.AddRelativeTorque(Vector3.up * 99999999999999, ForceMode.Force);
                 yield return new WaitForSeconds(b.value);
-                //Debug.Log("3");
+                Debug.Log("3");
 
 
 
@@ -376,7 +376,7 @@ public class codeList : MonoBehaviour
                 }
             if (b.rot == 4)
                 {
-                //Debug.Log("4");
+                Debug.Log("4");
                 }
             yield return null;
 
