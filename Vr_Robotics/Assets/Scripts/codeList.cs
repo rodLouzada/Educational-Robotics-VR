@@ -295,16 +295,17 @@ public class codeList : MonoBehaviour
 
         }
 
-    public void runCode(List<_block> lb)
+    public IEnumerator runCode(List<_block> lb)
         {
         _block aux;
         foreach(_block b in lb)
             {
-            functions(b, lb);
+            StartCoroutine( functions(b, lb));
             }
+        yield return null;
         }
     
-    public void functions(_block b, List<_block> lb)
+    public IEnumerator functions(_block b, List<_block> lb)
         {
         string name = b.name;
 
@@ -318,6 +319,7 @@ public class codeList : MonoBehaviour
                     currentList = b.child;
                     functions(_b);
                     }*/
+                Debug.Log("For i: " + i.ToString());
                 runCode(b.child);
                 } 
             }
@@ -346,9 +348,8 @@ public class codeList : MonoBehaviour
                 /*Vector3 currentPos = car.gameObject.transform.position;
                 Vector3 newPos = new Vector3(0, 0, b.value * 0.1f);
                 car.MovePosition(currentPos + newPos);*/
-                Debug.Log("1");
+                //Debug.Log("1");
                 car.AddRelativeForce(Vector3.forward * b.value);
-               
                 }
             if (b.rot == 2) //BACKWARD
                 {
@@ -356,42 +357,56 @@ public class codeList : MonoBehaviour
                 Vector3 newPos = new Vector3(0, 0, -0.1f);
                 car.gameObject.transform.position = Vector3.Lerp(currentPos, newPos,0.01f); */
                 car.AddRelativeForce(Vector3.forward * b.value);
-                Debug.Log("2");
+                //Debug.Log("2");
                 }
             if (b.rot == 3)
                 {
 
                 Vector3 currentPos = car.gameObject.transform.position;
-                Vector3 newPos = new Vector3(0, 0, 0.1f);
-                //car.gameObject.transform.position = Vector3.Lerp(currentPos, (currentPos+newPos), 0.5f);
-                car.AddRelativeForce(Vector3.forward * b.value);
-                Debug.Log("3");
+                Vector3 newPos = new Vector3(0, 0, 0.01f);
+                car.gameObject.transform.position = Vector3.Lerp(currentPos, (currentPos+newPos), 0.5f);
+                //car.AddRelativeForce(Vector3.forward * b.value);
+                waiting(1.0f);
+                //Debug.Log("3");
+
+
+
 
                 }
             if (b.rot == 4)
                 {
-                Debug.Log("4");
+                //Debug.Log("4");
                 }
+            return null;
 
 
             }
-
+        return null;
         }
 
 
-    // Update is called once per frame
-    void Update()
+        // Update is called once per frame
+        void FixedUpdate()
         {
         if (active)
             {
             //string code = GenerateCode();
             //Debug.Log(code);
 
-            runCode(_main_block_list);
+            StartCoroutine( runCode(_main_block_list));
             active = false;
             }
 
         canvas.text = code;
         }
 
+    void waiting (float in_time)
+        {
+        float currTime = 0;
+        while (currTime < in_time)
+            {
+            currTime += Time.deltaTime;
+            Debug.Log(currTime);
+            }
+        }
     }
