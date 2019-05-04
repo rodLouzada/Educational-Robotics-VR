@@ -21,6 +21,7 @@ public class NextPhase : MonoBehaviour
             gm.GetComponent<GameManager>().initialSetup.SetActive(false);
             gm.GetComponent<GameManager>().codeBuilder.SetActive(false);
             gm.GetComponent<GameManager>().guidedBuilding.SetActive(true);
+            gm.GetComponent<GameManager>().DisplayOnBoard("Pick up the Parts on the left and add them to the Car Body");
         //}
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class GameManager : MonoBehaviour
     public GameObject guidedBuildingBlock;
     public GameObject guidedBuilding;
     public GameObject codeBuilder;
+    public GameObject whiteBoard;
+
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +20,10 @@ public class GameManager : MonoBehaviour
         codeBuilder.SetActive(false);
     }
 
-
+    public void DisplayOnBoard(string s)
+    {
+        whiteBoard.GetComponent<Text>().text = s;
+    }
 
     // Update is called once per frame
     void Update()

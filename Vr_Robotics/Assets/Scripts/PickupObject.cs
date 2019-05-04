@@ -6,6 +6,7 @@ public class PickupObject : MonoBehaviour
 {
     public Transform holder;
     public Rigidbody rb;
+    public GameObject whereToPut;
     private Vector3 positionHolder;
     private Quaternion rotationHolder;
     private bool saveGravity = false;
@@ -64,6 +65,7 @@ public class PickupObject : MonoBehaviour
         saveMaxAngularVelocity = rb.maxAngularVelocity;
         rb.maxAngularVelocity = Mathf.Infinity;
         holder = t;
+        whereToPut.GetComponent<makeGlow>().makeItGlow = true;
 
     }
 
@@ -85,6 +87,7 @@ public class PickupObject : MonoBehaviour
                 rb.maxAngularVelocity = saveMaxAngularVelocity;
                 rb.velocity = vel;
                 holder = null;
+                whereToPut.GetComponent<makeGlow>().makeItGlow = false;
                 }
         }
     }
