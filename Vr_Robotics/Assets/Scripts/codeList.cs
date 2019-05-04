@@ -22,6 +22,7 @@ public class codeList : MonoBehaviour
     public float something = 2;
     public Rigidbody car;
     public int lvl;
+    public rayhit rh;
     
 
     public void recursiveLast(int it, List<_block> this_b, _block b)
@@ -327,10 +328,10 @@ public class codeList : MonoBehaviour
             int idx = lb.FindIndex(x => x.Equals(b));// currentList.IndexOf(b); // get "if_blok" position at list
             _block elseB = lb[idx + 1]; // next item will be "else_block"
             //lb.RemoveAt(idx + 1); // we remove that item because we dont want to go over it again (kinda not neccessary);
-
-            if (something < b.value)
+            float distance = rh.distanceHit;
+            if (distance > (b.value*0.01))
                 {
-                runCode(b.child);
+                yield return StartCoroutine(runCode(b.child));
                 }
             else
                 {
