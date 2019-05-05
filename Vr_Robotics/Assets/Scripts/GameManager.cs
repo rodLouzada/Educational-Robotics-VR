@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -9,7 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject guidedBuildingBlock;
     public GameObject guidedBuilding;
     public GameObject codeBuilder;
-    public GameObject whiteBoard;
+    public TextMeshProUGUI armText;
+    public TextMeshProUGUI whiteBoard;
 
 
     // Start is called before the first frame update
@@ -18,11 +20,19 @@ public class GameManager : MonoBehaviour
         initialSetup.SetActive(true);
         guidedBuilding.SetActive(false);
         codeBuilder.SetActive(false);
+
+        DisplayOnArm("Welcome to VR Robotics");
     }
 
     public void DisplayOnBoard(string s)
     {
-        whiteBoard.GetComponent<Text>().text = s;
+        whiteBoard.text = s;
+    }
+
+    public void DisplayOnArm(string s)
+    {
+        //armText.GetComponent<Text>().text = s;
+        armText.text = s;
     }
 
     // Update is called once per frame

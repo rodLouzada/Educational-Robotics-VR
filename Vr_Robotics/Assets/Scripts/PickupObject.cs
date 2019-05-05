@@ -65,7 +65,10 @@ public class PickupObject : MonoBehaviour
         saveMaxAngularVelocity = rb.maxAngularVelocity;
         rb.maxAngularVelocity = Mathf.Infinity;
         holder = t;
-        whereToPut.GetComponent<makeGlow>().makeItGlow = true;
+        if (whereToPut != null)
+            {
+                whereToPut.GetComponent<makeGlow>().makeItGlow = true;
+            }
 
     }
 

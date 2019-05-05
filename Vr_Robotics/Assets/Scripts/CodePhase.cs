@@ -20,7 +20,7 @@ public class CodePhase : MonoBehaviour
             gm.GetComponent<GameManager>().initialSetup.SetActive(false);
             gm.GetComponent<GameManager>().guidedBuilding.SetActive(false);
             gm.GetComponent<GameManager>().codeBuilder.SetActive(true);
-
+            gm.GetComponent<GameManager>().DisplayOnArm("Snap Code Blocks together to Program your car");
             }
         }
 

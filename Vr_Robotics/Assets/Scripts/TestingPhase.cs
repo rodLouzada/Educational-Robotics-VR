@@ -19,6 +19,7 @@ public class TestingPhase : MonoBehaviour
             gm.GetComponent<GameManager>().initialSetup.SetActive(false);           
             gm.GetComponent<GameManager>().codeBuilder.SetActive(false);
             gm.GetComponent<GameManager>().guidedBuilding.SetActive(true);
+            gm.GetComponent<GameManager>().DisplayOnArm("Great Coding");
         }
     }
 
