@@ -307,10 +307,12 @@ public class codeList : MonoBehaviour
     public IEnumerator functions(_block b, List<_block> lb)
         {
         string name = b.name;
+        string src,aux;
+        int forindex;
 
         if (name == "loop")
             {
-
+            forindex = code.IndexOf("f");
             for (int i = 0; i < b.value; i++)
                 {
                 /*foreach (_block _b in b.child)
@@ -319,22 +321,72 @@ public class codeList : MonoBehaviour
                     functions(_b);
                     }*/
                 Debug.Log("For i: " + i.ToString());
+                src = "for (int i=";
+                aux = "<color=#ff0000ff>" + src + "</color>";
+                code = code.Replace(src, aux);
+                              
+
+                src = ", i<";
+                aux = "<color=#ff0000ff>" + src + "</color>";
+                code = code.Replace(src, aux);
+
+                src = " ,i++){";
+                aux = "<color=#ff0000ff>" + src + "</color>";
+                code = code.Replace(src, aux);
+                
+                yield return new WaitForSeconds(1f);
+
+                src = "for (int i=";
+                aux = "<color=#000000ff>" + src + "</color>";
+                code = code.Replace(src, aux);
+
+
+                src = ", i<";
+                aux = "<color=#000000ff>" + src + "</color>";
+                code = code.Replace(src, aux);
+
+                src = " ,i++){";
+                aux = "<color=#000000ff>" + src + "</color>";
+                code = code.Replace(src, aux); 
+
                 yield return StartCoroutine(runCode(b.child));
                 } 
             }
         if (name == "if")
             {
+            src = "if (";
+            aux = "<color=#ff0000ff>" + src + "</color>";
+            code = code.Replace(src, aux);
+
+            yield return new WaitForSeconds(1f);
+
+            src = "if (";
+            aux = "<color=#000000ff>" + src + "</color>";
+            code = code.Replace(src, aux);
 
             int idx = lb.FindIndex(x => x.Equals(b));// currentList.IndexOf(b); // get "if_blok" position at list
             _block elseB = lb[idx + 1]; // next item will be "else_block"
             //lb.RemoveAt(idx + 1); // we remove that item because we dont want to go over it again (kinda not neccessary);
             float distance = rh.distanceHit;
-            if (distance > (b.value*0.01))
+            if (distance > ((b.value*0.01)+0.14))
                 {
+                
+
                 yield return StartCoroutine(runCode(b.child));
                 }
             else
                 {
+
+                src = "else {";
+                aux = "<color=#ff0000ff>" + src + "</color>";
+                code = code.Replace(src, aux);
+
+                yield return new WaitForSeconds(1f);
+
+                src = "else {";
+                aux = "<color=#000000ff>" + src + "</color>";
+                code = code.Replace(src, aux);
+
                 foreach (_block _b in elseB.child)
                     yield return StartCoroutine(runCode(elseB.child));
                 }
@@ -342,7 +394,18 @@ public class codeList : MonoBehaviour
         if (name == "motor")
             {
             Debug.Log("motor: " + b.rot.ToString() + " rotation, " + b.value.ToString() + " values \n");
-            if(b.rot == 1) //FOWARD
+
+            src = "Motor(";
+            aux = "<color=#ff0000ff>" + src + "</color>";
+            code = code.Replace(src, aux);
+
+            yield return new WaitForSeconds(1f);
+
+            src = "Motor(";
+            aux = "<color=#000000ff>" + src + "</color>";
+            code = code.Replace(src, aux);
+
+            if (b.rot == 1) //FOWARD
                 {
                 /*Vector3 currentPos = car.gameObject.transform.position;
                 Vector3 newPos = new Vector3(0, 0, b.value * 0.1f);

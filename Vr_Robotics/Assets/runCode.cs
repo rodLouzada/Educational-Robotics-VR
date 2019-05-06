@@ -12,6 +12,7 @@ public class runCode : MonoBehaviour
             {
             
             StartCoroutine(cl.runCode(cl._main_block_list));
+            this.gameObject.SetActive(false);
             }
         }
     }
