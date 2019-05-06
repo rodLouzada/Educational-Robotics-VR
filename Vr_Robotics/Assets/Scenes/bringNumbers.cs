@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class bringNumbers : MonoBehaviour
 {
-    public GameObject numbers;
+    public GameObject [] numbers ;
+    public GameObject[] directions;
+    public bool isActive = false;
+    public hand [] h;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +22,31 @@ public class bringNumbers : MonoBehaviour
 
     public void ShowNumbers()
         {
-        numbers.SetActive(true);
+        foreach(GameObject b in numbers)
+            {
+                b.SetActive(true);
+                isActive = true;
+            foreach(hand hand in h)
+                {
+                hand.isActive += 1;
+                }
+            
+            }
+        
         }
-}
+
+    public void ShowDirections()
+        {
+        foreach (GameObject d in directions)
+            {
+            d.SetActive(true);
+            isActive = true;
+            foreach (hand hand in h)
+                {
+                hand.isActive += 1;
+                }
+
+            }
+
+        }
+    }

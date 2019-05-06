@@ -9,7 +9,7 @@ public class hand : MonoBehaviour
     public bringNumbers attachment2 = null;
     public setValue attachment3 = null;
     public OVRInput.Controller ct;
-
+    public int isActive = 0;
     public bool dissapear;
     // Start is called before the first frame update
     void Start()
@@ -94,20 +94,54 @@ public class hand : MonoBehaviour
 
         if ( buttonXPress)
             {
-            attachment2 = b;
+            if (isActive==0)
+                {
+                attachment2 = b;
 
-            attachment2.ShowNumbers();
+                attachment2.ShowNumbers();
+                //isActive = true;
 
-            attachment2 = null;
+
+
+                attachment2 = null;
+
+                }
+            else
+                {
+                attachment3 = y;
+
+                attachment3.SetValues();
+                //isActive = false;
+
+                attachment3 = null;
+                }
+                           
+            
             }
 
         if (buttonYPress)
             {
-            attachment3 = y;
+            if (isActive == 0)
+                {
+                attachment2 = b;
 
-            attachment3.SetValues();
+                attachment2.ShowDirections();
+                //isActive = true;
 
-            attachment3 = null;
+
+
+                attachment2 = null;
+
+                }
+            else
+                {
+                attachment3 = y;
+
+                attachment3.SetValues();
+                //isActive = false;
+
+                attachment3 = null;
+                }
             }
 
 

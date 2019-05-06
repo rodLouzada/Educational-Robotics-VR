@@ -8,6 +8,7 @@ public class setValue : MonoBehaviour
     public Text container;
     public string value;
     public GameObject numbers;
+    public hand [] h;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +25,10 @@ public class setValue : MonoBehaviour
         {
         container.text = value;
         numbers.SetActive(false);
+        
+        foreach (hand hand in h)
+            {
+            hand.isActive -= 1;
+            }
         }
 }
