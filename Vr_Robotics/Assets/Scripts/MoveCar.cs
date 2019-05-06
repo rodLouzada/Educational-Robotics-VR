@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoveCar : MonoBehaviour
 {
+    public GameObject parent;
     GameObject car;
     Vector3 move;
     Rigidbody carRB;
@@ -34,21 +35,26 @@ public class MoveCar : MonoBehaviour
 
     public void RotateLeft(int val)
     {
-        Vector3 oldpos = transform.position;
-        transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y + 90f, transform.localRotation.eulerAngles.z);
-        transform.position = oldpos;
-        }
+        parent.transform.Rotate(Vector3.up * carSpeed * Time.deltaTime);
+        //Vector3 oldpos = transform.position;
+        //transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y + 90f, transform.localRotation.eulerAngles.z);
+        //transform.position = oldpos;
+    }
 
     public void RotateRight(int val)
     {
-        Vector3 oldpos = transform.position;
-        transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y - 90f, transform.localRotation.eulerAngles.z);
-        transform.position = oldpos;
-        }
+        parent.transform.Rotate(Vector3.up * carSpeed * Time.deltaTime);
+        //Vector3 oldpos = transform.position;
+        //transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y - 90f, transform.localRotation.eulerAngles.z);
+        //transform.position = oldpos;
+    }
 
     // Update is called once per frame
     void Update()
     {
-
+        //parent.transform.Rotate(Vector3.up * carSpeed * Time.deltaTime);
+        //Vector3 oldpos = parent.transform.position;
+        //parent.transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y + 90f, transform.localRotation.eulerAngles.z);
+        //parent.transform.position = oldpos;
     }
 }

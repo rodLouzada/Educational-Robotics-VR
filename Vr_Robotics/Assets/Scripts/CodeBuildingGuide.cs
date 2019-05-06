@@ -14,6 +14,9 @@ public class CodeBuildingGuide : MonoBehaviour
     private bool StepTwoDone = false;
     private bool StepThreeDone = false;
     private bool StepFourDone = false;
+    private bool StepFiveDone = false;
+    private bool StepSixDone = false;
+    private bool StepSevenDone = false;
 
 
     //Coding Blocks
@@ -41,6 +44,17 @@ public class CodeBuildingGuide : MonoBehaviour
             {
                 check = block2.transform.Find("Switch Div/Attachment/" + block1.name).gameObject;
             }
+
+        else if((block1.Equals(dualMotorBlock1) && block2.Equals(switchDivBlock)))
+        {
+            check = block2.transform.Find("Next/Start Loop/Next/Switch Div/Next/Next Top/Dual Motor").gameObject;
+        }
+        
+        else if(block1.Equals(dualMotorBlock1) && block2.Equals(switchDivBlock))
+        {
+            check = block2.transform.Find("Next/Start Loop/Next/Switch Div/Next/Next Bottom/Dual Motor").gameObject;
+        }
+
         else
              check = block1.transform.Find("Next/" + block2.name).gameObject;
 
@@ -104,17 +118,34 @@ public class CodeBuildingGuide : MonoBehaviour
 
                 dualMotorBlock1.GetComponent<makeGlow>().makeItGlow = true;
                 //dualMotorBlock2.GetComponent<makeGlow>().makeItGlow = true;
-                startBlock.GetComponent<makeGlow>().makeItGlow = true;
+                switchDivBlock.GetComponent<makeGlow>().makeItGlow = true;
 
                 StepThreeDone = true;
                 }
             }
 
-        if ( !StepFourDone && areConnected(dualMotorBlock1, switchDivBlock) )
+        if ( !StepFourDone && areConnected(dualMotorBlock1, startBlock) )
         {
-            gm.DisplayOnArm("Yee haw");
+            gm.DisplayOnArm("Connect the other [Dual Motor] Block to the [Switch Div] Block");
+
+            dualMotorBlock2.GetComponent<makeGlow>().makeItGlow = true;
+            switchDivBlock.GetComponent<makeGlow>().makeItGlow = true;
+
+
 
             StepFourDone = true;
+        }
+
+        if(!StepFiveDone && areConnected(dualMotorBlock2, startBlock))
+        {
+            gm.DisplayOnArm("You still gotta close the [Div] dumbfuck");
+
+            dualMotorBlock2.GetComponent<makeGlow>().makeItGlow = false;
+            switchDivBlock.GetComponent<makeGlow>().makeItGlow = false;
+
+
+
+            StepFiveDone = true;
         }
 
         }
