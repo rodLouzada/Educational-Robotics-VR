@@ -8,6 +8,10 @@ public class CodePhase : MonoBehaviour
     public GameObject lhand;
     public GameObject gm;
     public GameObject wall;
+    public AudioClip select;
+    public AudioSource source;
+    private float volLowRange = .5f;
+    private float volHighRange = 1.0f;
     // Start is called before the first frame update
     void Start()
         {
@@ -17,6 +21,8 @@ public class CodePhase : MonoBehaviour
     private void OnTriggerEnter(Collider col)
         {
         if (col.CompareTag("hand")){
+            float vol = Random.Range(volLowRange, volHighRange);
+            source.PlayOneShot(select, volHighRange);
             gm.GetComponent<GameManager>().initialSetup.SetActive(false);
             gm.GetComponent<GameManager>().guidedBuilding.SetActive(false);
             gm.GetComponent<GameManager>().codeBuilder.SetActive(true);

@@ -22,25 +22,29 @@ public class MoveCar : MonoBehaviour
         move = this.gameObject.transform.position;
     }
 
-    void MoveForward(int val)
+    public void MoveForward(int val)
     {
         carRB.velocity = transform.forward * val;
     }
 
-    void MoveBackward(int val)
+    public void MoveBackward(int val)
     {
         carRB.velocity = -transform.forward * val;
     }
 
-    void RotateLeft(int val)
+    public void RotateLeft(int val)
     {
-        transform.Rotate(new Vector3(0, -1, 0) * Time.deltaTime * val, Space.World);
-    }
+        Vector3 oldpos = transform.position;
+        transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y + 90f, transform.localRotation.eulerAngles.z);
+        transform.position = oldpos;
+        }
 
-    void RotateRight(int val)
+    public void RotateRight(int val)
     {
-        transform.Rotate(new Vector3(0, 1, 0) * Time.deltaTime * val, Space.World);
-    }
+        Vector3 oldpos = transform.position;
+        transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y - 90f, transform.localRotation.eulerAngles.z);
+        transform.position = oldpos;
+        }
 
     // Update is called once per frame
     void Update()

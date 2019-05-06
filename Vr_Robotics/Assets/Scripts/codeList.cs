@@ -23,6 +23,7 @@ public class codeList : MonoBehaviour
     public Rigidbody car;
     public int lvl;
     public rayhit rh;
+    public GameObject car2;
     
 
     public void recursiveLast(int it, List<_block> this_b, _block b)
@@ -369,7 +370,7 @@ public class codeList : MonoBehaviour
             aux = "<color=#ff0000ff>" + src + "</color>";
             code = code.Replace(src, aux);
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
 
             aux = "<color=#000000ff>" + src + "</color>";
             code = code.Replace(src, aux);
@@ -380,7 +381,7 @@ public class codeList : MonoBehaviour
             aux = "<color=#ff0000ff>" + src + "</color>";
             code = code.Replace(src, aux);
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
             src = "if (";
             aux = "<color=#000000ff>" + src + "</color>";
             code = code.Replace(src, aux);
@@ -399,7 +400,7 @@ public class codeList : MonoBehaviour
                 aux = "<color=#ff0000ff>" + src + "</color>";
                 code = code.Replace(src, aux);
 
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(1f);
 
                 aux = "<color=#000000ff>" + src + "</color>";
                 code = code.Replace(src, aux);
@@ -412,7 +413,7 @@ public class codeList : MonoBehaviour
                 aux = "<color=#ff0000ff>" + src + "</color>";
                 code = code.Replace(src, aux);
 
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(1f);
 
                 aux = "<color=#000000ff>" + src + "</color>";
                 code = code.Replace(src, aux);
@@ -425,7 +426,7 @@ public class codeList : MonoBehaviour
                 aux = "<color=#ff0000ff>" + src + "</color>";
                 code = code.Replace(src, aux);
 
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(1f);
 
                 aux = "<color=#000000ff>" + src + "</color>";
                 code = code.Replace(src, aux);
@@ -439,10 +440,7 @@ public class codeList : MonoBehaviour
             aux = "<color=#ff0000ff>" + src + "</color>";
             code = code.Replace(src, aux);
 
-            yield return new WaitForSeconds(0.5f);
-
-            aux = "<color=#000000ff>" + src + "</color>";
-            code = code.Replace(src, aux);
+            
 
             if (b.rot == 1) //FOWARD
                 {
@@ -459,7 +457,7 @@ public class codeList : MonoBehaviour
                 Vector3 newPos = new Vector3(0, 0, -0.1f);
                 car.gameObject.transform.position = Vector3.Lerp(currentPos, newPos,0.01f); */
                 car.AddRelativeForce(-Vector3.forward * 70);
-                yield return new WaitForSeconds(0.5f);
+                //yield return new WaitForSeconds(0.5f);
                 Debug.Log("2");
                 }
             if (b.rot == 3)// rotate clockwise
@@ -467,20 +465,25 @@ public class codeList : MonoBehaviour
 
                 //Vector3 currentPos = car.gameObject.transform.localPosition;
                 //Vector3 newPos = new Vector3(0, 0, 0.05f* b.value);
-                
-                
-                car.AddRelativeTorque(Vector3.up * 99999999999999, ForceMode.Force);
-                yield return new WaitForSeconds(0.5f);
+
+                car2.GetComponent<MoveCar>().RotateRight(50);
+                //car.AddRelativeTorque(Vector3.up * 99999999999999, ForceMode.Force);
+                //yield return new WaitForSeconds(0.5f);
                 Debug.Log("3");
 
 
 
 
                 }
-            if (b.rot == 4)
+            if (b.rot == 4) //Rotate counterclockwise
                 {
-                Debug.Log("4");
+                car2.GetComponent<MoveCar>().RotateLeft(50);
                 }
+
+            yield return new WaitForSeconds(1f);
+
+            aux = "<color=#000000ff>" + src + "</color>";
+            code = code.Replace(src, aux);
             yield return null;
 
 

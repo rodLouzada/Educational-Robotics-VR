@@ -102,7 +102,6 @@ public class hand : MonoBehaviour
                 //isActive = true;
 
 
-
                 attachment2 = null;
 
                 }
@@ -127,9 +126,6 @@ public class hand : MonoBehaviour
 
                 attachment2.ShowDirections();
                 //isActive = true;
-
-
-
                 attachment2 = null;
 
                 }
