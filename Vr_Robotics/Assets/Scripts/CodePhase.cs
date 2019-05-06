@@ -7,7 +7,7 @@ public class CodePhase : MonoBehaviour
     public GameObject rhand;
     public GameObject lhand;
     public GameObject gm;
-
+    public GameObject wall;
     // Start is called before the first frame update
     void Start()
         {
@@ -21,6 +21,7 @@ public class CodePhase : MonoBehaviour
             gm.GetComponent<GameManager>().guidedBuilding.SetActive(false);
             gm.GetComponent<GameManager>().codeBuilder.SetActive(true);
             gm.GetComponent<GameManager>().DisplayOnArm("Snap Code Blocks together to Program your car");
+            wall.SetActive(false);
             }
         }
 

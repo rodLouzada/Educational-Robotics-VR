@@ -7,6 +7,7 @@ public class NextPhase : MonoBehaviour
     public GameObject rhand;
     public GameObject lhand;
     public GameObject gm;
+    public GameObject wall;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class NextPhase : MonoBehaviour
             gm.GetComponent<GameManager>().codeBuilder.SetActive(false);
             gm.GetComponent<GameManager>().guidedBuilding.SetActive(true);
             gm.GetComponent<GameManager>().DisplayOnBoard("Pick up the Parts on the left and add them to the Car Body");
-
+        wall.SetActive(false);
         gm.GetComponent<GameManager>().DisplayOnArm("Build the Car");
         //}
     }

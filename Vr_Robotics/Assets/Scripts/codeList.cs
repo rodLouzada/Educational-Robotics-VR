@@ -47,7 +47,10 @@ public class codeList : MonoBehaviour
         {
         _block _b;
         _b.name = "name"; _b.rot = 0; _b.value = 0; _b.child = new List<_block>();
-
+        _b.leftDirection = "";
+        _b.leftRotations = "";
+        _b.rightDirection = "";
+        _b.rightRotations = "";
         if (g.name == "Concurrent End")
             {
             enterConc = false;
@@ -259,7 +262,12 @@ public class codeList : MonoBehaviour
         {
         _block b;
         b.name = "motor"; b.rot = 0; b.value = 0; b.child = new List<_block>();
-        if(leftDirection == rightDirection) // rotating the same direction
+        b.leftDirection = leftDirection;
+        b.leftRotations = leftRotations;
+        b.rightDirection = rightDirection;
+        b.rightRotations = rightRotations;
+
+        if (leftDirection == rightDirection) // rotating the same direction
             {
             if(leftDirection == "F") // the car goes foward
                 {
@@ -293,6 +301,12 @@ public class codeList : MonoBehaviour
         public string name;
         public int value;
         public int rot;
+
+        public string leftDirection;
+        public string leftRotations;
+        public string rightDirection;
+        public string rightRotations;
+
 
         }
 
@@ -334,7 +348,7 @@ public class codeList : MonoBehaviour
                 aux = "<color=#ff0000ff>" + src + "</color>";
                 code = code.Replace(src, aux);
                 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
 
                 src = "for (int i=";
                 aux = "<color=#000000ff>" + src + "</color>";
@@ -350,7 +364,15 @@ public class codeList : MonoBehaviour
                 code = code.Replace(src, aux); 
 
                 yield return StartCoroutine(runCode(b.child));
-                } 
+                }
+            src = "} //end loop";
+            aux = "<color=#ff0000ff>" + src + "</color>";
+            code = code.Replace(src, aux);
+
+            yield return new WaitForSeconds(0.5f);
+
+            aux = "<color=#000000ff>" + src + "</color>";
+            code = code.Replace(src, aux);
             }
         if (name == "if")
             {
@@ -358,8 +380,7 @@ public class codeList : MonoBehaviour
             aux = "<color=#ff0000ff>" + src + "</color>";
             code = code.Replace(src, aux);
 
-            yield return new WaitForSeconds(1f);
-
+            yield return new WaitForSeconds(0.5f);
             src = "if (";
             aux = "<color=#000000ff>" + src + "</color>";
             code = code.Replace(src, aux);
@@ -373,6 +394,16 @@ public class codeList : MonoBehaviour
                 
 
                 yield return StartCoroutine(runCode(b.child));
+
+                src = "}// end if";
+                aux = "<color=#ff0000ff>" + src + "</color>";
+                code = code.Replace(src, aux);
+
+                yield return new WaitForSeconds(0.5f);
+
+                aux = "<color=#000000ff>" + src + "</color>";
+                code = code.Replace(src, aux);
+
                 }
             else
                 {
@@ -381,27 +412,35 @@ public class codeList : MonoBehaviour
                 aux = "<color=#ff0000ff>" + src + "</color>";
                 code = code.Replace(src, aux);
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
 
-                src = "else {";
                 aux = "<color=#000000ff>" + src + "</color>";
                 code = code.Replace(src, aux);
 
                 foreach (_block _b in elseB.child)
+                    {
                     yield return StartCoroutine(runCode(elseB.child));
+                    }
+                src = "} //end else";
+                aux = "<color=#ff0000ff>" + src + "</color>";
+                code = code.Replace(src, aux);
+
+                yield return new WaitForSeconds(0.5f);
+
+                aux = "<color=#000000ff>" + src + "</color>";
+                code = code.Replace(src, aux);
                 }
             }
         if (name == "motor")
             {
             Debug.Log("motor: " + b.rot.ToString() + " rotation, " + b.value.ToString() + " values \n");
 
-            src = "Motor(";
+            src = "Motor(Left_Motor(" + b.leftDirection + ", " + b.leftRotations + "), Right_Motor(" + b.rightDirection + ", " + b.rightRotations + "));";
             aux = "<color=#ff0000ff>" + src + "</color>";
             code = code.Replace(src, aux);
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
 
-            src = "Motor(";
             aux = "<color=#000000ff>" + src + "</color>";
             code = code.Replace(src, aux);
 
@@ -412,7 +451,7 @@ public class codeList : MonoBehaviour
                 car.MovePosition(currentPos + newPos);*/
                 Debug.Log("1");
                 car.AddRelativeForce(Vector3.forward * 70);
-                yield return new WaitForSeconds(b.value);
+                yield return new WaitForSeconds(0.5f);
                 }
             if (b.rot == 2) //BACKWARD
                 {
@@ -420,7 +459,7 @@ public class codeList : MonoBehaviour
                 Vector3 newPos = new Vector3(0, 0, -0.1f);
                 car.gameObject.transform.position = Vector3.Lerp(currentPos, newPos,0.01f); */
                 car.AddRelativeForce(-Vector3.forward * 70);
-                yield return new WaitForSeconds(b.value);
+                yield return new WaitForSeconds(0.5f);
                 Debug.Log("2");
                 }
             if (b.rot == 3)// rotate clockwise
@@ -431,7 +470,7 @@ public class codeList : MonoBehaviour
                 
                 
                 car.AddRelativeTorque(Vector3.up * 99999999999999, ForceMode.Force);
-                yield return new WaitForSeconds(b.value);
+                yield return new WaitForSeconds(0.5f);
                 Debug.Log("3");
 
 

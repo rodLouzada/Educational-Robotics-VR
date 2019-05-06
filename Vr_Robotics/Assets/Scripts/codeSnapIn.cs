@@ -7,6 +7,10 @@ public class codeSnapIn : MonoBehaviour
     public Transform local;
     public GameObject start;
     bool free = true;
+    public AudioClip click;
+    public AudioSource source;
+    private float volLowRange = .5f;
+    private float volHighRange = 1.0f;
 
     private void Start()
     {
@@ -34,6 +38,8 @@ public class codeSnapIn : MonoBehaviour
            // col.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
             free = false;
+            float vol = Random.Range(volLowRange, volHighRange);
+            source.PlayOneShot(click, vol);
 
             start.GetComponent<codeList>().AddToList(col.gameObject);
 
