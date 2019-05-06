@@ -5,6 +5,8 @@ using UnityEngine;
 public class TestingPhase : MonoBehaviour
 {
     public GameObject gm;
+    public GameObject wall;
+    public GameObject btn_run;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,8 @@ public class TestingPhase : MonoBehaviour
             gm.GetComponent<GameManager>().initialSetup.SetActive(false);           
             gm.GetComponent<GameManager>().codeBuilder.SetActive(false);
             gm.GetComponent<GameManager>().guidedBuilding.SetActive(true);
+            wall.SetActive(true);
+            btn_run.SetActive(true);
             gm.GetComponent<GameManager>().DisplayOnArm("Great Coding");
         }
     }
