@@ -67,7 +67,10 @@ public class hand : MonoBehaviour
             triggerValue = OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger);
             buttonXPress = OVRInput.Get(OVRInput.Button.One);
             buttonYPress = OVRInput.Get(OVRInput.Button.Two);
+
+            
             }
+        
         else {
             triggerValue = 0;
             buttonXPress = false;

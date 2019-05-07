@@ -22,9 +22,12 @@ public class saveObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        StreamWriter writer = new StreamWriter(localPath, true);
-        writer.Write(cl.code);
-        writer.Close();
-        this.gameObject.SetActive(false);
+        if (col.CompareTag("hand"))
+        {
+            StreamWriter writer = new StreamWriter(localPath, true);
+            writer.Write(cl.code);
+            writer.Close();
+            this.gameObject.SetActive(false);
+        }
     }
 }
