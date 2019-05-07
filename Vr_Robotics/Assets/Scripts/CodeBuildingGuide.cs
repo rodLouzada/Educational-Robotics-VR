@@ -145,21 +145,10 @@ public class CodeBuildingGuide : MonoBehaviour
                 }
             }
 
-        if ( !StepFourDone && areConnected(dualMotorBlock1, switchDivBlock))
+        
+        if(!StepFourDone && areConnected(dualMotorBlock1, switchDivBlock))
         {
-            gm.DisplayOnArm("Connect the other [Dual Motor] Block to the [Switch Div] Block");
-
-            dualMotorBlock2.GetComponent<makeGlow>().makeItGlow = true;
-            switchDivBlock.GetComponent<makeGlow>().makeItGlow = true;
-
-
-
-            StepFourDone = true;
-        }
-
-        if(!StepFiveDone && areConnected(dualMotorBlock2, switchDivBlock))
-        {
-            gm.DisplayOnArm("You still gotta close the [Div] dumbfuck");
+            gm.DisplayOnArm("You gotta close the [Div] dumbfuck");
 
             dualMotorBlock2.GetComponent<makeGlow>().makeItGlow = false;
             switchDivBlock.GetComponent<makeGlow>().makeItGlow = false;
@@ -167,10 +156,20 @@ public class CodeBuildingGuide : MonoBehaviour
             startBlock.GetComponent<makeGlow>().makeItGlow = true;
             switchDivEndBlock.GetComponent<makeGlow>().makeItGlow = true;
 
+            StepFourDone = true;
+        }
+
+        if ( !StepFiveDone && areConnected(startBlock, switchDivEndBlock))
+        {
+            gm.DisplayOnArm("Connect the other [Dual Motor] Block to the [Switch Div] Block");
+
+            dualMotorBlock2.GetComponent<makeGlow>().makeItGlow = true;
+            switchDivBlock.GetComponent<makeGlow>().makeItGlow = true;
+
             StepFiveDone = true;
         }
 
-        if(!StepSixDone && areConnected(startBlock, switchDivEndBlock))
+        if(!StepSixDone && areConnected(dualMotorBlock2, switchDivBlock))
         {
             gm.DisplayOnArm("Ok now close that Fuckin loop");
 
