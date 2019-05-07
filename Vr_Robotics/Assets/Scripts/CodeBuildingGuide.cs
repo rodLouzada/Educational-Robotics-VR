@@ -92,6 +92,10 @@ public class CodeBuildingGuide : MonoBehaviour
         if (!StepZeroDone && this.gameObject.activeInHierarchy)
             {
             gm.DisplayOnArm("Connect [START] Block to [START LOOP] Block");
+            gm.DisplayOnBoard("It's time to program your car. " + 
+                "\nThe values of the blocks have already been set, but if you want to change them use 'x' to adjust the values and 'y to adjust the rotation." + 
+                "\nFollow the instructions on your arm to build the program. ");
+
             startBlock.GetComponent<makeGlow>().makeItGlow = true;
             startLoopBlock.GetComponent<makeGlow>().makeItGlow = true;
 
@@ -103,6 +107,9 @@ public class CodeBuildingGuide : MonoBehaviour
         if (!StepOneDone && areConnected(startBlock, startLoopBlock))
             {
             gm.DisplayOnArm("Connect [SENSOR] Block to [IF-ELSE] Block");
+            gm.DisplayOnBoard("The Sensor will detect how close objects are to the front of the car. \n" + 
+                "IF the sensor is greater than the value set away from any objects the car will perform the top [Dual Motor] Block action. \n" +
+                "ELSE the car will perform the bottom [Dual Motor] Block action");
 
             startBlock.GetComponent<makeGlow>().makeItGlow = false;
             startLoopBlock.GetComponent<makeGlow>().makeItGlow = false;
@@ -133,7 +140,7 @@ public class CodeBuildingGuide : MonoBehaviour
             if (areConnected(startComboBlock, switchDivBlock))
                 {
                 gm.DisplayOnArm("Connect the top [DUAL MOTOR] Block to the [IF-ELSE] Block");
-
+                gm.DisplayOnBoard("The top [DUAL MOTOR] block represents the turning of the cars wheels. It is set to move forward.");
                 startBlock.GetComponent<makeGlow>().makeItGlow = false;
                 switchDivBlock.GetComponent<makeGlow>().makeItGlow = false;
 
@@ -148,7 +155,9 @@ public class CodeBuildingGuide : MonoBehaviour
         
         if(!StepFourDone && areConnected(dualMotorBlock1, switchDivBlock))
         {
-            gm.DisplayOnArm("Close the [IF-ELSE] block to complete your if-else statement");
+            gm.DisplayOnArm("Close the [IF-ELSE] block to complete your if statement");
+            gm.DisplayOnBoard("By attaching the [IF-ELSE END] block to the program you will have coded that the car will complete the [DUAL MOTOR] action " + 
+                "\nIF the car is further than the set amount away from any object in front of it.");
 
             dualMotorBlock2.GetComponent<makeGlow>().makeItGlow = false;
             switchDivBlock.GetComponent<makeGlow>().makeItGlow = false;
@@ -162,7 +171,8 @@ public class CodeBuildingGuide : MonoBehaviour
         if ( !StepFiveDone && areConnected(startBlock, switchDivEndBlock))
         {
             gm.DisplayOnArm("Connect the other [DUAL MOTOR] Block to the [IF-ELSE] Block");
-
+            gm.DisplayOnBoard("By attaching the [DUAL MOTOR] Block to the bottom of the [IF ELSE] Block" +
+                "\nyou will have coded that the car will complete the [DUAL MOTOR] Action (Preset as turning around) when the [SENSOR] reads it is too close to an object");
             dualMotorBlock2.GetComponent<makeGlow>().makeItGlow = true;
             switchDivBlock.GetComponent<makeGlow>().makeItGlow = true;
 
@@ -193,7 +203,7 @@ public class CodeBuildingGuide : MonoBehaviour
         if (!StepEightDone && areConnected(loopEndBlock, EndBlock))
         {
             gm.DisplayOnArm("Congratulations! You've coded a car!");
-
+            gm.DisplayOnBoard("Press the TEST Button to return to the car you built and watch it come to life.");
             startBlock.GetComponent<makeGlow>().makeItGlow = false;
             EndBlock.GetComponent<makeGlow>().makeItGlow = false;
 
