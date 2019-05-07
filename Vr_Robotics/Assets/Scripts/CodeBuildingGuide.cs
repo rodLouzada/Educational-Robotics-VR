@@ -17,6 +17,7 @@ public class CodeBuildingGuide : MonoBehaviour
     private bool StepFiveDone = false;
     private bool StepSixDone = false;
     private bool StepSevenDone = false;
+    private bool StepEightDone = false;
 
 
     //Coding Blocks
@@ -47,13 +48,33 @@ public class CodeBuildingGuide : MonoBehaviour
 
         else if((block1.Equals(dualMotorBlock1) && block2.Equals(switchDivBlock)))
         {
+            block2 = startBlock;
             check = block2.transform.Find("Next/Start Loop/Next/Switch Div/Next/Next Top/Dual Motor").gameObject;
         }
         
-        else if(block1.Equals(dualMotorBlock1) && block2.Equals(switchDivBlock))
+        else if(block1.Equals(dualMotorBlock2) && block2.Equals(switchDivBlock))
         {
+            block2 = startBlock;
             check = block2.transform.Find("Next/Start Loop/Next/Switch Div/Next/Next Bottom/Dual Motor").gameObject;
         }
+
+        else if (block1.Equals(startBlock) && block2.Equals(switchDivEndBlock))
+        {
+            check = block1.transform.Find("Next/Start Loop/Next/Switch Div/Next/Next Top/Dual Motor/L Motor/Right Motor Block/Concurrent End Block/Concurrent End/Next/Switch Div End").gameObject;
+        }
+
+        else if (block1.Equals(switchDivEndBlock) && block2.Equals(loopEndBlock))
+        {
+            block1 = startBlock;
+            check = block1.transform.Find("Next/Start Loop/Next/Switch Div/Next/Next Top/Dual Motor/L Motor/Right Motor Block/Concurrent End Block/Concurrent End/Next/Switch Div End/Next/End Loop").gameObject;
+        }
+
+        else if (block1.Equals(loopEndBlock) && block2.Equals(EndBlock))
+        {
+            block1 = startBlock;
+            check = block1.transform.Find("Next/Start Loop/Next/Switch Div/Next/Next Top/Dual Motor/L Motor/Right Motor Block/Concurrent End Block/Concurrent End/Next/Switch Div End/Next/End Loop/Next/End").gameObject;
+        }
+
 
         else
              check = block1.transform.Find("Next/" + block2.name).gameObject;
@@ -111,7 +132,7 @@ public class CodeBuildingGuide : MonoBehaviour
             GameObject startComboBlock = startBlock.transform.Find("Next/Start Loop").gameObject;
             if (areConnected(startComboBlock, switchDivBlock))
                 {
-                gm.DisplayOnArm("Connect a [Dual Motor] Block to the [Switch] Block");
+                gm.DisplayOnArm("Connect the top [Dual Motor] Block to the [Switch] Block");
 
                 startBlock.GetComponent<makeGlow>().makeItGlow = false;
                 switchDivBlock.GetComponent<makeGlow>().makeItGlow = false;
@@ -124,7 +145,7 @@ public class CodeBuildingGuide : MonoBehaviour
                 }
             }
 
-        if ( !StepFourDone && areConnected(dualMotorBlock1, startBlock) )
+        if ( !StepFourDone && areConnected(dualMotorBlock1, switchDivBlock))
         {
             gm.DisplayOnArm("Connect the other [Dual Motor] Block to the [Switch Div] Block");
 
@@ -136,19 +157,52 @@ public class CodeBuildingGuide : MonoBehaviour
             StepFourDone = true;
         }
 
-        if(!StepFiveDone && areConnected(dualMotorBlock2, startBlock))
+        if(!StepFiveDone && areConnected(dualMotorBlock2, switchDivBlock))
         {
             gm.DisplayOnArm("You still gotta close the [Div] dumbfuck");
 
             dualMotorBlock2.GetComponent<makeGlow>().makeItGlow = false;
             switchDivBlock.GetComponent<makeGlow>().makeItGlow = false;
 
-
+            startBlock.GetComponent<makeGlow>().makeItGlow = true;
+            switchDivEndBlock.GetComponent<makeGlow>().makeItGlow = true;
 
             StepFiveDone = true;
         }
 
+        if(!StepSixDone && areConnected(startBlock, switchDivEndBlock))
+        {
+            gm.DisplayOnArm("Ok now close that Fuckin loop");
+
+            startBlock.GetComponent<makeGlow>().makeItGlow = true;
+            loopEndBlock.GetComponent<makeGlow>().makeItGlow = true;
+
+            StepSixDone = true;
         }
+
+        if (!StepSevenDone && areConnected(switchDivEndBlock, loopEndBlock))
+        {
+            gm.DisplayOnArm("Add an end bracket ya fuckin moron");
+
+            startBlock.GetComponent<makeGlow>().makeItGlow = true;
+            loopEndBlock.GetComponent<makeGlow>().makeItGlow = false;
+            EndBlock.GetComponent<makeGlow>().makeItGlow = true;
+
+            StepSevenDone = true;
+        }
+
+        if (!StepEightDone && areConnected(loopEndBlock, EndBlock))
+        {
+            gm.DisplayOnArm("You're done you dumb bitch");
+
+            startBlock.GetComponent<makeGlow>().makeItGlow = false;
+            EndBlock.GetComponent<makeGlow>().makeItGlow = false;
+
+
+            StepEightDone = true;
+        }
+
+    }
 
        
     }
