@@ -91,7 +91,7 @@ public class CodeBuildingGuide : MonoBehaviour
         //
         if (!StepZeroDone && this.gameObject.activeInHierarchy)
             {
-            gm.DisplayOnArm("Connect [Start] Block to [Start Loop] Block");
+            gm.DisplayOnArm("Connect [START] Block to [START LOOP] Block");
             startBlock.GetComponent<makeGlow>().makeItGlow = true;
             startLoopBlock.GetComponent<makeGlow>().makeItGlow = true;
 
@@ -102,7 +102,7 @@ public class CodeBuildingGuide : MonoBehaviour
         //first step
         if (!StepOneDone && areConnected(startBlock, startLoopBlock))
             {
-            gm.DisplayOnArm("Connect [Sensor] Block to [Switch] Block");
+            gm.DisplayOnArm("Connect [SENSOR] Block to [IF-ELSE] Block");
 
             startBlock.GetComponent<makeGlow>().makeItGlow = false;
             startLoopBlock.GetComponent<makeGlow>().makeItGlow = false;
@@ -116,7 +116,7 @@ public class CodeBuildingGuide : MonoBehaviour
 
         if (!StepTwoDone && areConnected(sensorBlock, switchDivBlock))
             {
-            gm.DisplayOnArm("Connect the [Start]->[Start Loop] Block to the [Sensor]->[Switch] Block");
+            gm.DisplayOnArm("Connect the [START]->[START LOOP] Block to the [SENSOR]->[IF-ELSE] Block");
 
             switchDivBlock.GetComponent<makeGlow>().makeItGlow = false;
             sensorBlock.GetComponent<makeGlow>().makeItGlow = false;
@@ -132,7 +132,7 @@ public class CodeBuildingGuide : MonoBehaviour
             GameObject startComboBlock = startBlock.transform.Find("Next/Start Loop").gameObject;
             if (areConnected(startComboBlock, switchDivBlock))
                 {
-                gm.DisplayOnArm("Connect the top [Dual Motor] Block to the [Switch] Block");
+                gm.DisplayOnArm("Connect the top [DUAL MOTOR] Block to the [IF-ELSE] Block");
 
                 startBlock.GetComponent<makeGlow>().makeItGlow = false;
                 switchDivBlock.GetComponent<makeGlow>().makeItGlow = false;
@@ -148,7 +148,7 @@ public class CodeBuildingGuide : MonoBehaviour
         
         if(!StepFourDone && areConnected(dualMotorBlock1, switchDivBlock))
         {
-            gm.DisplayOnArm("You gotta close the [Div] dumbfuck");
+            gm.DisplayOnArm("Close the [IF-ELSE] block to complete your if-else statement");
 
             dualMotorBlock2.GetComponent<makeGlow>().makeItGlow = false;
             switchDivBlock.GetComponent<makeGlow>().makeItGlow = false;
@@ -161,7 +161,7 @@ public class CodeBuildingGuide : MonoBehaviour
 
         if ( !StepFiveDone && areConnected(startBlock, switchDivEndBlock))
         {
-            gm.DisplayOnArm("Connect the other [Dual Motor] Block to the [Switch Div] Block");
+            gm.DisplayOnArm("Connect the other [DUAL MOTOR] Block to the [IF-ELSE] Block");
 
             dualMotorBlock2.GetComponent<makeGlow>().makeItGlow = true;
             switchDivBlock.GetComponent<makeGlow>().makeItGlow = true;
@@ -171,7 +171,7 @@ public class CodeBuildingGuide : MonoBehaviour
 
         if(!StepSixDone && areConnected(dualMotorBlock2, switchDivBlock))
         {
-            gm.DisplayOnArm("Ok now close that Fuckin loop");
+            gm.DisplayOnArm("Ok now close the [START] loop");
 
             startBlock.GetComponent<makeGlow>().makeItGlow = true;
             loopEndBlock.GetComponent<makeGlow>().makeItGlow = true;
@@ -181,7 +181,7 @@ public class CodeBuildingGuide : MonoBehaviour
 
         if (!StepSevenDone && areConnected(switchDivEndBlock, loopEndBlock))
         {
-            gm.DisplayOnArm("Add an end bracket ya fuckin moron");
+            gm.DisplayOnArm("Add the [END] block to add an end bracket");
 
             startBlock.GetComponent<makeGlow>().makeItGlow = true;
             loopEndBlock.GetComponent<makeGlow>().makeItGlow = false;
@@ -192,7 +192,7 @@ public class CodeBuildingGuide : MonoBehaviour
 
         if (!StepEightDone && areConnected(loopEndBlock, EndBlock))
         {
-            gm.DisplayOnArm("You're done you dumb bitch");
+            gm.DisplayOnArm("Congratulations! You've coded a car!");
 
             startBlock.GetComponent<makeGlow>().makeItGlow = false;
             EndBlock.GetComponent<makeGlow>().makeItGlow = false;
