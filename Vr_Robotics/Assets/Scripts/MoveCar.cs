@@ -9,6 +9,7 @@ public class MoveCar : MonoBehaviour
     Vector3 move;
     Rigidbody carRB;
     public float carSpeed;
+    public GameObject pivot;
 
     private void OnEnable()
     {
@@ -35,7 +36,7 @@ public class MoveCar : MonoBehaviour
 
     public void RotateLeft(int val)
     {
-        parent.transform.Rotate(Vector3.up * carSpeed * Time.deltaTime);
+        parent.transform.Rotate(Vector3.up * 30*val);
         //Vector3 oldpos = transform.position;
         //transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y + 90f, transform.localRotation.eulerAngles.z);
         //transform.position = oldpos;
@@ -43,7 +44,7 @@ public class MoveCar : MonoBehaviour
 
     public void RotateRight(int val)
     {
-        parent.transform.Rotate(Vector3.up * carSpeed * Time.deltaTime);
+        parent.transform.Rotate(Vector3.up * -30*val);
         //Vector3 oldpos = transform.position;
         //transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y - 90f, transform.localRotation.eulerAngles.z);
         //transform.position = oldpos;

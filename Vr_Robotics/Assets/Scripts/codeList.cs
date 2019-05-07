@@ -466,8 +466,11 @@ public class codeList : MonoBehaviour
                 //Vector3 currentPos = car.gameObject.transform.localPosition;
                 //Vector3 newPos = new Vector3(0, 0, 0.05f* b.value);
 
-                car2.GetComponent<MoveCar>().RotateRight(50);
-                //car.AddRelativeTorque(Vector3.up * 99999999999999, ForceMode.Force);
+                //car2.GetComponent<MoveCar>().RotateRight(b.value);
+                car.useGravity = false;
+                car.AddTorque(Vector3.up * 1000f, ForceMode.Impulse);
+                yield return new WaitForSeconds(0.487f);
+                car.useGravity = true;
                 //yield return new WaitForSeconds(0.5f);
                 Debug.Log("3");
 
@@ -477,8 +480,12 @@ public class codeList : MonoBehaviour
                 }
             if (b.rot == 4) //Rotate counterclockwise
                 {
-                car2.GetComponent<MoveCar>().RotateLeft(50);
-                }
+                car.useGravity = false;
+                car.AddTorque(Vector3.up * -1000f, ForceMode.Impulse);
+                yield return new WaitForSeconds(0.487f);
+
+                car.useGravity = true;
+            }
 
             yield return new WaitForSeconds(1f);
 
