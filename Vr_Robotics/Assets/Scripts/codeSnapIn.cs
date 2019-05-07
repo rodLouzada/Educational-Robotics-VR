@@ -11,10 +11,11 @@ public class codeSnapIn : MonoBehaviour
     public AudioSource source;
     private float volLowRange = .5f;
     private float volHighRange = 1.0f;
+    OVRHapticsClip buzz;
 
     private void Start()
     {
-       // start = GameObject.Find("Start");
+        buzz = new OVRHapticsClip(click);
     }
 
     private void OnTriggerEnter(Collider col)//other)
@@ -35,8 +36,9 @@ public class codeSnapIn : MonoBehaviour
             //other.transform.parent = local.transform;
 
             other.transform.parent = local.transform;
-           // col.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-
+            // col.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            OVRHaptics.LeftChannel.Mix(buzz);
+            OVRHaptics.RightChannel.Mix(buzz);
             free = false;
             float vol = Random.Range(volLowRange, volHighRange);
             source.PlayOneShot(click, vol);
