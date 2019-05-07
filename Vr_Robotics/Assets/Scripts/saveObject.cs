@@ -2,28 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEditor;
+
+using System.Linq;
+using System.Text;
+using System.IO;
 
 public class saveObject : MonoBehaviour
 {
     string localPath;
-    public GameObject objToSave;
+    public codeList cl;
     DateTime date;
+    string texttosave;
     void Start()
     {
         date = DateTime.Now;
-        localPath = "Assets/Collection" + date.ToString() + ".prefab";
+        localPath = "Assets\\Collection\\" + date.ToString("yyyy-MM-ddTHH-mm-ss") + ".txt";
+        texttosave = cl.code;
     }
 
     private void OnTriggerEnter(Collider col)
     {
-        CreateNew(objToSave, localPath);
-    }
-
-    static void CreateNew(GameObject obj, string localPath)
-    {
-        //Create a new Prefab at the path given
-        GameObject prefab = PrefabUtility.SaveAsPrefabAsset(obj, localPath);
-        //PrefabUtility.ReplacePrefab(obj, prefab, ReplacePrefabOptions.ConnectToPrefab);
+        StreamWriter writer = new StreamWriter(localPath, true);
+        writer.Write(cl.code);
+        writer.Close();
+        this.gameObject.SetActive(false);
     }
 }

@@ -8,7 +8,7 @@ public class codeList : MonoBehaviour
     {
     public List<GameObject> blocks;
     public List<_block> _main_block_list = new List<_block> ();
-    string code = "func () {\n";
+    public string code = "func () {\n";
 
     public int numBocksIf = -1;
     int numBocksConc = 0;

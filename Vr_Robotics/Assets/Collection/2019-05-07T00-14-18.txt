@@ -1,0 +1,8 @@
+func () {
+for (int i=0, i<30 ,i++){ 
+if ( Sensor > 35
+ ){ 
+Motor(Left_Motor(F, 1), Right_Motor(F, 1)); 
+}// end if 
+ else { 
+Motor(Left_Motor(F, 1), Right_Motor(R, 1)); 
