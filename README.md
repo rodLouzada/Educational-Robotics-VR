@@ -1,6 +1,10 @@
 # Educational-Robotics-VR
 A Virtual Reality project to help learn the basic of robotics programming 
 
+
+[![Promo video](https://youtu.be/9xg5PfYpm08.jpg)](https://youtu.be/9xg5PfYpm08)
+
+
 Hello, (Virtual) World! is designed to be an immersive experience. We found in Virtual Reality (VR) a new way to introduce users to programming by immersing young learners into practical examples.
 
 Programming is a challenging skill to acquire. Many researchers have been trying to understand the pitfalls for young learners. Studies have found that many struggle to understand and apply certain abstract programming concepts when solving a problem. There are different reasons for these problems, including that: Programming demands a high abstraction level; Programming needs a competent level of both knowledge and practical problem solving techniques; and teaching cannot be individualized due to common class size; Programming is mostly dynamic, but usually taught using static materials.
