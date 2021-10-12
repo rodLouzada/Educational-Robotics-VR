@@ -14,3 +14,5 @@ With regards to the difficulties of learning how to program we proposed a VR-Exp
 As we mentioned, programming is inherently abstract. One practical, fun example for the usability and functionality of algorithms is robotics. One could program a robotic arm to grab a box and later see the instructions brought to life being executed by the robot. However, robotic parts can be costly as well as programming robots can require a complex understanding of electrical and computer engineering.
 
 In this project, we propose a virtual environment that abstracts the deep electronic knowledge of robotics and the specific syntax of programming languages for a simple coding with blocks as well as a lego-like approach to assemble robots.
+
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-nc-nd/4.0/)
